@@ -397,6 +397,7 @@ public class MainActivity extends AppCompatActivity
     static int PREF__audio_group_play_volume_percent = 100;
     static boolean PREF__auto_accept_image = true;
     static boolean PREF__auto_accept_video = false;
+    static boolean PREF__dark_main_screen = false;
     static int PREF__video_cam_resolution = 0;
     static int PREF__global_font_size = 2;
 
@@ -916,6 +917,17 @@ public class MainActivity extends AppCompatActivity
             e.printStackTrace();
             PREF__auto_accept_video = false;
         }
+
+        try
+        {
+            PREF__dark_main_screen = settings.getBoolean("dark_main_screen", false);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            PREF__dark_main_screen = false;
+        }
+
 
         try
         {
@@ -2091,6 +2103,16 @@ public class MainActivity extends AppCompatActivity
         {
             e.printStackTrace();
             PREF__auto_accept_video = false;
+        }
+
+        try
+        {
+            PREF__dark_main_screen = settings.getBoolean("dark_main_screen", false);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            PREF__dark_main_screen = false;
         }
 
         try

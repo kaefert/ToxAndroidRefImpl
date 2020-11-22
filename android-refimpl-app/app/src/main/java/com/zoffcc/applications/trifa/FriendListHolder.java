@@ -60,6 +60,7 @@ import static com.zoffcc.applications.trifa.HelperRelay.send_all_friend_pubkeys_
 import static com.zoffcc.applications.trifa.HelperRelay.send_relay_pubkey_to_all_friends;
 import static com.zoffcc.applications.trifa.HelperRelay.set_friend_as_own_relay_in_db;
 import static com.zoffcc.applications.trifa.Identicon.create_avatar_identicon_for_pubkey;
+import static com.zoffcc.applications.trifa.MainActivity.PREF__dark_main_screen;
 import static com.zoffcc.applications.trifa.MainActivity.VFS_ENCRYPT;
 import static com.zoffcc.applications.trifa.MainActivity.cache_confid_confnum;
 import static com.zoffcc.applications.trifa.MainActivity.cache_fnum_pubkey;
@@ -165,6 +166,13 @@ public class FriendListHolder extends RecyclerView.ViewHolder implements View.On
         {
             friend_line_container.setBackgroundResource(R.drawable.friend_list_neveronline_round_bg);
         }
+        else if (PREF__dark_main_screen)
+        {
+            friend_line_container.setBackgroundResource(R.drawable.friend_list_dark_round_bg);
+            statusText.setTextColor(context.getResources().getColor(R.color.md_dark_primary_text));
+            textView.setTextColor(context.getResources().getColor(R.color.md_dark_primary_text));
+            f_last_online_timestamp.setTextColor(context.getResources().getColor(R.color.md_dark_primary_text));
+        }
         else
         {
             if (fl.added_timestamp > (System.currentTimeMillis() - ONE_HOUR_IN_MS))
@@ -175,6 +183,9 @@ public class FriendListHolder extends RecyclerView.ViewHolder implements View.On
             {
                 friend_line_container.setBackgroundResource(R.drawable.friend_list_round_bg);
             }
+            statusText.setTextColor(context.getResources().getColor(R.color.md_light_primary_text));
+            textView.setTextColor(context.getResources().getColor(R.color.md_light_primary_text));
+            f_last_online_timestamp.setTextColor(context.getResources().getColor(R.color.md_light_primary_text));
         }
 
         // Log.i(TAG, "lot=" + fl.last_online_timestamp + " -> " + LAST_ONLINE_TIMSTAMP_ONLINE_NOW);
